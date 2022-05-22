@@ -8,8 +8,8 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class OrderServiceTest {
-    MemberService memberService = new MemberServiceImpl();
-    OrderService orderService = new OderServiceImpl();
+    MemberService memberService = new MemberServiceImpl(memberRepository);
+    OrderService orderService = new OderServiceImpl(memberRepository, discountPolicy);
 
     @Test
     void createOrder () {
