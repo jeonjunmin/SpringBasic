@@ -12,6 +12,8 @@ import hello.core.order.OrderService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+
+//@Configuration은 싱글톤을 보장한다.
 @Configuration
 public class AppConfig {
 
