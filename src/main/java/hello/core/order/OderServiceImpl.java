@@ -16,11 +16,14 @@ public class OderServiceImpl implements OrderService{
     private final MemberRepository memberRepository;
     private final DiscountPolicy discountPolicy;
 
-    @Autowired //생성자에 자동으로 의존관계를 주입시켜준다.
+   @Autowired //생성자에 자동으로 의존관계를 주입시켜준다.
     public OderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
         this.memberRepository = memberRepository;
         this.discountPolicy = discountPolicy;
+        System.out.println("discountPolicy = " + discountPolicy);
     }
+
+
 
     @Override
     public Order createOrder(Long memberId, String itemName, int itemPrice) {
