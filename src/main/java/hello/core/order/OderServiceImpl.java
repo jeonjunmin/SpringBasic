@@ -13,6 +13,7 @@ public class OderServiceImpl implements OrderService{
 //    private final DiscountPolicy discountPolicy = new FixDiscountPolicy();
 //    private final DiscountPolicy discountPolicy = new RateDiscountPolicy();
 
+    //생성자 의존관계 주입을 사용할때 final을 사용할 수 있다.
     private final MemberRepository memberRepository;
     private final DiscountPolicy discountPolicy;
 
