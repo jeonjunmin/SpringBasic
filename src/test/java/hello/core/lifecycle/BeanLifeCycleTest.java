@@ -19,7 +19,7 @@ public class BeanLifeCycleTest {
     @Configuration
     static class LifeCycleConfig {
 
-        @Bean(initMethod = "init", destroyMethod = "closed") //스프링 컨테이너가 시작하면서 NetworkClient에 DI가 일어날때 NetworkClient클래스의 init 메소드가 호출되고 스프링이 꺼지면서 closed 메소드가 호출된다.
+        @Bean
         public NetworkClient networkClient (){
             NetworkClient networkClient = new NetworkClient();
             networkClient.setUrl("http://hello-spring.dev");

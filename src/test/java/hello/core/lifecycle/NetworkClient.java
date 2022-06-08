@@ -3,6 +3,9 @@ package hello.core.lifecycle;
 import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.InitializingBean;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+
 public class NetworkClient  {
 
     private String url;
@@ -30,14 +33,16 @@ public class NetworkClient  {
     }
 
 
-    //객체가 생성되면서 주입이 되면 아래 afterPropertiesSet 함수가 호출이 되고 스프링이 죽으면서 destroy 함수가 호출된다.
-
+    //빈이 등록되면서 컨테이너가 올라갈때 자동으로 호출
+    @PostConstruct
     public void init() throws Exception {
         System.out.println("NeworkClient init");
         connect();
         call("초기화 연결 메시지");
     }
 
+    //컨테이너가 클로즈 되면 자동으로 호출
+    @PreDestroy
     public void closed() throws Exception {
         System.out.println("NeworkClient close");
         disconnect();
