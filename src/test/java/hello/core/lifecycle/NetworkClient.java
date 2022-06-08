@@ -3,7 +3,7 @@ package hello.core.lifecycle;
 import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.InitializingBean;
 
-public class NetworkClient implements InitializingBean, DisposableBean {
+public class NetworkClient  {
 
     private String url;
 
@@ -31,13 +31,15 @@ public class NetworkClient implements InitializingBean, DisposableBean {
 
 
     //객체가 생성되면서 주입이 되면 아래 afterPropertiesSet 함수가 호출이 되고 스프링이 죽으면서 destroy 함수가 호출된다.
-    @Override
-    public void afterPropertiesSet() throws Exception {
+
+    public void init() throws Exception {
+        System.out.println("NeworkClient init");
         connect();
         call("초기화 연결 메시지");
     }
-    @Override
-    public void destroy() throws Exception {
+
+    public void closed() throws Exception {
+        System.out.println("NeworkClient close");
         disconnect();
     }
 }

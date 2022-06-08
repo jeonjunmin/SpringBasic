@@ -13,13 +13,13 @@ public class BeanLifeCycleTest {
     public void lifeCycleTest(){
         ConfigurableApplicationContext ac = new AnnotationConfigApplicationContext(LifeCycleConfig.class);
         NetworkClient client = ac.getBean(NetworkClient.class);
-        ac.close();
+        ac.close(); //ConfigurableApplicationContext에서 제공하는 컨테이너 종료 메소드 close
     }
 
     @Configuration
     static class LifeCycleConfig {
 
-        @Bean
+        @Bean(initMethod = "init", destroyMethod = "closed") //스프링 컨테이너가 시작하면서 NetworkClient에 DI가 일어날때 NetworkClient클래스의 init 메소드가 호출되고 스프링이 꺼지면서 closed 메소드가 호출된다.
         public NetworkClient networkClient (){
             NetworkClient networkClient = new NetworkClient();
             networkClient.setUrl("http://hello-spring.dev");
