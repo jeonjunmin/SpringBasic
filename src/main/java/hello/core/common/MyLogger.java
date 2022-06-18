@@ -1,6 +1,7 @@
 package hello.core.common;
 
 import org.springframework.context.annotation.Scope;
+import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
@@ -8,7 +9,7 @@ import javax.annotation.PreDestroy;
 import java.util.UUID;
 
 @Component
-@Scope(value = "request") //HTTP 요청당 하나씩 생성이 되고 사라진다.
+@Scope(value = "request", proxyMode = ScopedProxyMode.TARGET_CLASS) //HTTP 요청당 하나씩 생성이 되고 사라진다. proxyMode를 쓰면 provider를 안써도 가짜 클래스를 만들어 request 요청전에 미리 주입을 시켜논다.
 public class MyLogger {
     private String uuid;
     private String requestURL;
