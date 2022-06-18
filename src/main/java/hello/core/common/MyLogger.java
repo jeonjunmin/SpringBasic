@@ -8,7 +8,7 @@ import javax.annotation.PreDestroy;
 import java.util.UUID;
 
 @Component
-@Scope(value = "reauest") //HTTP 요청당 하나씩 생성이 되고 사라진다.
+@Scope(value = "request") //HTTP 요청당 하나씩 생성이 되고 사라진다.
 public class MyLogger {
     private String uuid;
     private String requestURL;
