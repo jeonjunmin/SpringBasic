@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 public class LogDemoController {
 
     private final LogDemoService logDemoService;
-    private final MyLogger myLogger;
+    private final MyLogger myLogger; //myLogger는 request스코프이기 때문에 서버 기동시에 해당 객체는 없어서 주입하며 에러가 난다.
 
     @RequestMapping("log-demo")
     @ResponseBody
